@@ -19,15 +19,24 @@ int		hook_keydown(int key)
 	return (0);
 }
 
+int hook_mouse(int button, int x, int y, void *param)
+{
+  printf("%d\n", button);
+//  draw_line(0, 0, x, y);
+  return (0);
+}
+
 int main()
 {
 	void *mlx;
 	void *win;
 
+	printf("s");
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 500, 500, "42");
-	draw_line(50, 50, 100, 60, mlx, win);
+	draw_line(100, 50, 100, 10, mlx, win);
 	mlx_key_hook(win, hook_keydown, mlx);
+	mlx_mouse_hook(win, hook_mouse, mlx);
 	mlx_loop(mlx);
 	return (0);
 }
