@@ -14,4 +14,19 @@
 
 void draw_line(int x1, int y1, int x2, int y2, void *mlx, void *win);
 
+typedef struct  s_point
+{
+    int     x;
+    int     y;
+    void    *mlx;
+    void    *win;
+}               t_point;
+
+typedef struct  s_mlx
+{
+    int    **mtrx;
+    void    *mlx;
+    void    *win;
+}               t_mlx;
+
 #endif
