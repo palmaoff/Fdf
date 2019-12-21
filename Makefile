@@ -23,7 +23,7 @@ OBJDIR	= ./obj/
 
 all: $(NAME)
 
-$(NAME): obj $(LIB) $(MLX_LIB) $(OBJ)
+$(NAME): obj $(LIB) $(MLX_LIB) $(OBJ) ./minilibx_macos/ ./libft/
 		$(CC) $(FLAGS) $(OBJ) $(MLX_LNK) -o $(NAME)
 
 obj:
@@ -39,10 +39,13 @@ $(LIB):
 	make -C $(LIB)
 
 clean:
-		@rm -f $(OBJ)
+		rm -f $(OBJ)
+		make -C $(LIB) clean
+		make -C $(MLX) clean
 
 fclean: clean
-		@rm -f $(NAME)
+		rm -f $(NAME)
+		make -C $(LIB) fclean
 
 re: fclean all
 
