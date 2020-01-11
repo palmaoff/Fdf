@@ -1,7 +1,15 @@
 NAME = fdf
 
 SRC =   main.c \
-        draw_line.c
+        draw.c \
+		img.c \
+		input.c \
+		get_next_line.c \
+		print_map.c \
+		matrix.c \
+		lines.c \
+		free_all.c \
+		move.c
 
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
@@ -10,6 +18,7 @@ FLAGS = -Wall -Wextra -Werror
 
 LIB = ./libft/
 LIB_INK = -I ./libft
+LIBFT =	libft/libft.a
 
 MLX = ./minilibx_macos/
 MLX_LIB	= $(addprefix $(MLX),mlx.a)
@@ -23,8 +32,8 @@ OBJDIR	= ./obj/
 
 all: $(NAME)
 
-$(NAME): obj $(LIB) $(MLX_LIB) $(OBJ) ./minilibx_macos/ ./libft/
-		$(CC) $(FLAGS) $(OBJ) $(MLX_LNK) -o $(NAME)
+$(NAME): obj $(MLX_LIB) $(LIBFT) $(OBJ)
+		$(CC) $(FLAGS) $(OBJ) $(MLX_LNK) -o $(NAME) $(LIBFT)
 
 obj:
 	mkdir -p $(OBJDIR)
@@ -32,10 +41,13 @@ obj:
 $(OBJDIR)%.o:$(SRCDIR)%.c
 		$(CC) $(FLAGS) $(MLX_INK) -I $(INKDIR) $(LIB_INK) -o $@ -c $<
 
+
+
+
 $(MLX_LIB):
 	make -C $(MLX)
 
-$(LIB):
+$(LIBFT):
 	make -C $(LIB)
 
 clean:

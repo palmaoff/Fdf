@@ -6,7 +6,7 @@
 #    By: eflorean <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/04 11:13:27 by eflorean          #+#    #+#              #
-#    Updated: 2019/10/19 16:11:53 by eflorean         ###   ########.fr        #
+#    Updated: 2019/12/26 17:10:35 by eflorean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar -rc $(NAME) $(OBJ)
 	ranlib $(NAME)
+
 .c.o:
 	$(CC) $(CFLAGS) -c $<
 
@@ -44,3 +45,5 @@ fclean: clean
 	/bin/rm -f $(NAME)
 
 re: fclean all
+
+.PHONY : all, re, clean, fclean

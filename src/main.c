@@ -6,61 +6,91 @@
 /*   By: eflorean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 13:47:20 by eflorean          #+#    #+#             */
-/*   Updated: 2019/12/18 14:13:45 by eflorean         ###   ########.fr       */
+/*   Updated: 2019/12/26 18:14:02 by eflorean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
-int		hook_keydown(int key)
+int key_press(int keycode, t_mlx *mlx)
 {
-	if (key == 53)
-		exit(1);
+	if (keycode == 53)
+		exit(0);
+	else if (keycode == 125)
+		move_it(mlx, 1);
+	else if (keycode == 124)
+		move_it(mlx, 2);
+	else if (keycode == 126)
+		move_it(mlx, -1);
+	else if (keycode == 123)
+		move_it(mlx, -2);
+	else if (keycode == 6) 
+		move_it(mlx, 3);
+	else if (keycode == 7) 
+		move_it(mlx, -3);
+	else if (keycode == 27) 
+		zoom_it(mlx, 1);
+	else if (keycode == 24) 
+		zoom_it(mlx, -1);
+	else
+	{
+		printf("%d\n", keycode);
+	}
 	return (0);
 }
 
-int hook_mouse(int button, int x, int y, t_point *p)
+int hook_mouse(int button, int x, int y, t_mlx *mlx)
 {
 
-  if (p->x == 0 && p->y == 0)
-  {
-    p->x = x;
-    p->y = y;
-    return (0);
-  }
-  if (button == 1)
-  {
-    draw_line(p->x, p->y, x, y, p->mlx, p->win);
-    p->x = x;
-    p->y = y;
-  }
-  return (0);
+	if (mlx->p.x == 0 && mlx->p.y == 0)
+	{
+		mlx->p.x = x;
+		mlx->p.y = y;
+		return (0);
+	}
+	if (button == 1)
+	{
+		draw_line(mlx->p.x, mlx->p.y, x, y, mlx);
+		mlx->p.x = x;
+		mlx->p.y = y;
+	}
+	return (0);
 }
 
-t_point *intit(void *mlx, void *win)
+int hook_exit(void *param)
 {
-  t_point *p;
-
-  p = malloc(sizeof(t_point));
-  p->mlx = mlx;
-  p->win = win;
-  p->x = 0;
-  p->y = 0;
-  return (p);
+    (void)param;
+    exit(0);
 }
 
-int main()
+void init(t_mlx *mlx)
 {
-	void *mlx;
-	void *win;
-	t_point *p;
+	mlx->mlx = mlx_init();
+	mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "42");
+	img_new(mlx);
+	mlx->cam.x = WIDTH / 2;
+	mlx->cam.y = HEIGHT / 3;
+	mlx->cam.z = 30;
+}
 
-	printf("%d\n", atoi(" 123 123"));
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1000, 1000, "42");
-	p = intit(mlx, win);
-	mlx_key_hook(win, hook_keydown, mlx);
-	mlx_mouse_hook(win, hook_mouse, p);
-	mlx_loop(mlx);
+int main(int ac, char **av)
+{
+	t_mlx mlx;
+	int fd;
+
+	if (ac != 2)
+	{
+		ft_putstr("error: not enough arguments");
+		return (0);
+	}
+	fd = open(av[1], O_RDONLY);
+	init(&mlx);
+	input(fd, &mlx);
+	print_map(&mlx);
+//	mlx_mouse_hook(mlx.win, hook_mouse, &mlx);
+	mlx_hook(mlx.win, 3, 0, key_press, &mlx);
+	mlx_hook(mlx.win, 17, 0, hook_exit, mlx.mlx);
+	mlx_loop(mlx.mlx);
+	free_mtr(&mlx);
 	return (0);
 }
