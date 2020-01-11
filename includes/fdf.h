@@ -35,9 +35,10 @@ typedef struct  s_point
 
 typedef struct  s_cam
 {
-    int		x;
-    int		y;
-    int		z;
+    double		x;
+    double		y;
+    double		z;
+	double		di;
 }               t_cam;
 
 typedef struct  s_mlx

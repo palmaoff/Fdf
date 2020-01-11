@@ -16,22 +16,22 @@ int key_press(int keycode, t_mlx *mlx)
 {
 	if (keycode == 53)
 		exit(0);
-	else if (keycode == 125)
+	else if (keycode == 13 || keycode == 125)
 		move_it(mlx, 1);
-	else if (keycode == 124)
+	else if (keycode == 0 || keycode == 124)
 		move_it(mlx, 2);
-	else if (keycode == 126)
+	else if (keycode == 1 || keycode == 126)
 		move_it(mlx, -1);
-	else if (keycode == 123)
+	else if (keycode == 2 || keycode == 123)
 		move_it(mlx, -2);
 	else if (keycode == 6) 
-		move_it(mlx, 3);
-	else if (keycode == 7) 
 		move_it(mlx, -3);
+	else if (keycode == 7) 
+		move_it(mlx, 3);
 	else if (keycode == 27) 
-		zoom_it(mlx, 1);
+		move_it(mlx, -4);
 	else if (keycode == 24) 
-		zoom_it(mlx, -1);
+		move_it(mlx, 4);
 	else
 	{
 		printf("%d\n", keycode);
@@ -41,19 +41,12 @@ int key_press(int keycode, t_mlx *mlx)
 
 int hook_mouse(int button, int x, int y, t_mlx *mlx)
 {
-
-	if (mlx->p.x == 0 && mlx->p.y == 0)
-	{
-		mlx->p.x = x;
-		mlx->p.y = y;
-		return (0);
-	}
-	if (button == 1)
-	{
-		draw_line(mlx->p.x, mlx->p.y, x, y, mlx);
-		mlx->p.x = x;
-		mlx->p.y = y;
-	}
+	x = 0;
+	y = 0;
+	if (button == 4) 
+		move_it(mlx, 4);
+	if (button == 5) 
+		move_it(mlx, -4);
 	return (0);
 }
 
@@ -68,9 +61,10 @@ void init(t_mlx *mlx)
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "42");
 	img_new(mlx);
-	mlx->cam.x = WIDTH / 2;
+	mlx->cam.x = WIDTH / 3;
 	mlx->cam.y = HEIGHT / 3;
-	mlx->cam.z = 30;
+	mlx->cam.z = 20;
+	mlx->cam.di = 0.1;
 }
 
 int main(int ac, char **av)
@@ -87,8 +81,8 @@ int main(int ac, char **av)
 	init(&mlx);
 	input(fd, &mlx);
 	print_map(&mlx);
-//	mlx_mouse_hook(mlx.win, hook_mouse, &mlx);
-	mlx_hook(mlx.win, 3, 0, key_press, &mlx);
+	mlx_hook(mlx.win, 2, 0, key_press, &mlx);
+	mlx_hook(mlx.win, 4, 0, hook_mouse, &mlx);
 	mlx_hook(mlx.win, 17, 0, hook_exit, mlx.mlx);
 	mlx_loop(mlx.mlx);
 	free_mtr(&mlx);
