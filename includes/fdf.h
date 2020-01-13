@@ -27,10 +27,10 @@ typedef struct	s_img
 
 typedef struct  s_point
 {
-    int			x;
-    int			y;
-    int			z;
-    struct  	s_point *next;
+    double			x;
+    double			y;
+    double			z;
+    struct	s_point	*next;
 }               t_point;
 
 typedef struct  s_cam
@@ -38,6 +38,9 @@ typedef struct  s_cam
     double		x;
     double		y;
     double		z;
+	double		x_r;
+	double		y_r;
+	double		z_r;
 	double		di;
 }               t_cam;
 
@@ -51,6 +54,7 @@ typedef struct  s_mlx
     t_point		*scn;
     t_point		**scrn;
     t_point		**mtrx;
+	int			**xr;
 }               t_mlx;
 
 void	draw_line(int x1, int y1, int x2, int y2, t_mlx *mlx);
@@ -63,5 +67,6 @@ void	free_mtr(t_mlx *mlx);
 void	move_it(t_mlx *mlx, int x);
 void	zoom_it(t_mlx *mlx, int x);
 void	print(t_mlx *mlx);
-
+void	rotate(t_mlx *mlx, int i, int j);
+void	print_points(t_point *strt); // tmp
 #endif

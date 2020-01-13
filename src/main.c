@@ -32,6 +32,18 @@ int key_press(int keycode, t_mlx *mlx)
 		move_it(mlx, -4);
 	else if (keycode == 24) 
 		move_it(mlx, 4);
+	else if (keycode == 88) 
+		move_it(mlx, -5);
+	else if (keycode == 85) 
+		move_it(mlx, 5);
+	else if (keycode == 83) 
+		move_it(mlx, 6);
+	else if (keycode == 84) 
+		move_it(mlx, -6);
+	else if (keycode == 86) 
+		move_it(mlx, 7);
+	else if (keycode == 87) 
+		move_it(mlx, -7);
 	else
 	{
 		printf("%d\n", keycode);
@@ -61,10 +73,13 @@ void init(t_mlx *mlx)
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "42");
 	img_new(mlx);
-	mlx->cam.x = WIDTH / 3;
-	mlx->cam.y = HEIGHT / 3;
+	mlx->cam.x = WIDTH / 2;
+	mlx->cam.y = HEIGHT / 2;
 	mlx->cam.z = 20;
-	mlx->cam.di = 0.1;
+	mlx->cam.di = 1;
+	mlx->cam.x_r = 0;
+	mlx->cam.y_r = 0;
+	mlx->cam.z_r = 0;
 }
 
 int main(int ac, char **av)

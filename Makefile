@@ -9,7 +9,8 @@ SRC =   main.c \
 		matrix.c \
 		lines.c \
 		free_all.c \
-		move.c
+		move.c \
+		rotate.c
 
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
@@ -32,7 +33,7 @@ OBJDIR	= ./obj/
 
 all: $(NAME)
 
-$(NAME): obj $(MLX_LIB) $(LIBFT) $(OBJ)
+$(NAME): obj $(MLX_LIB) $(LIBFT) $(OBJ) ./includes ./libft ./src
 		$(CC) $(FLAGS) $(OBJ) $(MLX_LNK) -o $(NAME) $(LIBFT)
 
 obj:
@@ -40,10 +41,7 @@ obj:
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
 		$(CC) $(FLAGS) $(MLX_INK) -I $(INKDIR) $(LIB_INK) -o $@ -c $<
-
-
-
-
+		
 $(MLX_LIB):
 	make -C $(MLX)
 

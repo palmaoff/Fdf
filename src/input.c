@@ -1,5 +1,5 @@
 #include "fdf.h"
-
+/*
 void	print_points(t_point *strt)
 {
 	while (strt != NULL)
@@ -8,7 +8,7 @@ void	print_points(t_point *strt)
 		strt = strt->next;
 	}
 }
-
+*/
 void dfree(char **a)
 {
 	while (*a)
