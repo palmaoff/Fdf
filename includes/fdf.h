@@ -62,7 +62,7 @@ void	draw_line(t_point p1, t_point p2, t_mlx *mlx);
 void	img_new(t_mlx *mlx);
 int		input(int fd, t_mlx *mlx);
 void	print_map(t_mlx *mlx);
-void	make_matrix(t_mlx *mlx, int h);
+void	make_matrix(t_mlx *mlx, float h);
 void	lines(t_mlx *mlx);
 void	free_mtr(t_mlx *mlx);
 void	move_it(t_mlx *mlx, int x);

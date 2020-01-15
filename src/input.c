@@ -2,18 +2,21 @@
 
 void save_color(char *a, t_mlx *mlx)
 {
+	printf("%s\n", a);
 	mlx->cam.color = ft_htoi(a);
+	printf("%d\n", ft_htoi(a));
 }
 
 int check_digit(char *a, t_mlx *mlx)
 {
-	(void)mlx;
+	char *p;
+
 	while (*a != '\0' && *a != ',')
 	{
 		if (!ft_isdigit(*a) && *a != '-' && *a != '+')
 			return (0);
-		if (*a != ',')
-			save_color(a + 1, mlx);
+		if ((p = ft_strchr(a, ',')))
+			save_color(p + 1, mlx);
 		a++;
 	}
 	return (1);
@@ -38,8 +41,8 @@ t_point	*point_new(int x, int y, int z, t_mlx *mlx)
 	p->y = y;
 	p->z = z;
 	p->next = NULL;
-	p->color = mlx->cam.color;
-	mlx->cam.color = 0xFF15a2;
+	(*p).color = mlx->cam.color;
+	mlx->cam.color = 0xEEE8AA;
 	return (p);
 }
 
@@ -100,6 +103,7 @@ int main(int ac, char **av)
 	t_mlx mlx;
 	int fd;
 
+	init(&mlx);
 	if (ac != 2)
 	{
 		ft_putstr("error: not enough arguments");
@@ -107,6 +111,7 @@ int main(int ac, char **av)
 	}
 	fd = open(av[1], O_RDONLY);
 	printf("%d\n", input(fd, &mlx));
+	free_mtr(&mlx);
 	return (0);
 }
 */

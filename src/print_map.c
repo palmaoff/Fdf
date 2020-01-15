@@ -19,6 +19,7 @@ static void screen_map(t_point *scn, t_point *scrn, t_mlx *mlx)
     scrn->x = scn->x;
 	scrn->y = scn->y;
 	scrn->z = scn->z * mlx->cam.di;
+	scrn->color = scn->color;
 }
 
 void	print_map(t_mlx *mlx)

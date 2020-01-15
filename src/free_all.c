@@ -1,4 +1,4 @@
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 static	void free_lists(t_point *strt)
 {

@@ -15,7 +15,7 @@ static int how_long(t_point *p)
 	return (i);
 }
 
-static void connect(t_mlx *mlx, int h, int w)
+static void connect(t_mlx *mlx, float h, float w)
 {
 	int i;
 	int j;
@@ -30,7 +30,8 @@ static void connect(t_mlx *mlx, int h, int w)
 		{
 			mlx->mtrx[i][j] = *tmp;
 			mlx->mtrx[i][j].x -= w / 2;
-			mlx->mtrx[i][j].y -= h / 2;
+			mlx->mtrx[i][j].y -= (h - 1) / 2;
+			mlx->mtrx[i][j].color = tmp->color;
 			tmp = tmp->next;
 			j++;
 		}
@@ -38,9 +39,9 @@ static void connect(t_mlx *mlx, int h, int w)
 	}
 }
 
-void	make_matrix(t_mlx *mlx, int h)
+void	make_matrix(t_mlx *mlx, float h)
 {
-	int w;
+	float w;
 	int i;
 
 	i = 0;

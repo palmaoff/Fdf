@@ -14,6 +14,7 @@
 
 int key_press(int keycode, t_mlx *mlx)
 {
+//	printf("%d\n", keycode);
 	if (keycode == 53)
 		exit(0);
 	else if (keycode == 13 || keycode == 125)
@@ -46,10 +47,6 @@ int key_press(int keycode, t_mlx *mlx)
 		move_it(mlx, -7);
 	else if (keycode == 82)
 		move_it(mlx, 8);
-	else
-	{
-		printf("%d\n", keycode);
-	}
 	return (0);
 }
 
@@ -82,6 +79,7 @@ void init(t_mlx *mlx)
 	mlx->cam.x_r = 0;
 	mlx->cam.y_r = 0;
 	mlx->cam.z_r = 0;
+	mlx->cam.color = 0xFF15a2;
 }
 
 int main(int ac, char **av)
@@ -91,7 +89,7 @@ int main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		ft_putstr("error: not enough arguments");
+		ft_putstr("ussage:\t./fdf [filename]\n");
 		return (0);
 	}
 	fd = open(av[1], O_RDONLY);
@@ -108,17 +106,5 @@ int main(int ac, char **av)
 	mlx_hook(mlx.win, 17, 0, hook_exit, mlx.mlx);
 	mlx_loop(mlx.mlx);
 	free_mtr(&mlx);
-/*
-	t_point p1;
-	t_point p2;
-
-	p1.x = 150;
-	p1.y = 0;
-	p2.x = 0;
-	p2.y = 100;
-	draw_line(p1, p2, &mlx);
-	mlx_hook(mlx.win, 17, 0, hook_exit, mlx.mlx);
-	mlx_loop(mlx.mlx);
-*/
 	return (0);
 }
