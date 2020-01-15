@@ -1,11 +1,23 @@
-//
-// Created by Emilee Florean on 20/12/2019.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wquirrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/15 21:13:58 by wquirrel          #+#    #+#             */
+/*   Updated: 2020/01/15 21:14:02 by wquirrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 # define WIDTH 1280
 # define HEIGHT 720
+
+# define WHITE 0xffffff;
+# define BLACK 0x000000;
+# define RED 0xe80c0c;
 
 # include "mlx.h"
 # include <unistd.h>
@@ -71,4 +83,5 @@ void	print(t_mlx *mlx);
 void	rotate(t_mlx *mlx, int i, int j);
 void	print_points(t_point *strt); // tmp
 int     ft_htoi(const char *hex);
+int 	get_color(t_point current, t_point start, t_point end, t_point delta);
 #endif
