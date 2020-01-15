@@ -37,34 +37,7 @@ static void connect(t_mlx *mlx, int h, int w)
 		i++;
 	}
 }
-/*
-static	void make_rotate_matrix(t_mlx *mlx)
-{
-	int i;
-	int j;
 
-	i = 0;
-	mlx->xr = (int **)malloc(sizeof(t_point *) * mlx->p.y);
-	while (i < mlx->p.y)
-	{
-		(mlx->xr)[i] = (int *)malloc(sizeof(t_point ) * (mlx->p.x + 1));
-		j = 0;
-		while (j <= mlx->p.x)
-		{
-			if (i == j)
-				(mlx->xr)[i][j] = 1;
-			if ((j == mlx->p.x && i == (mlx->p.y - 1)) || (j == (mlx->p.x - 1) && i == (mlx->p.y - 2)))
-				(mlx->xr)[i][j] = cos(0.46373398);
-			if (j == (mlx->p.x - 1) && i == (mlx->p.y - 1))
-				(mlx->xr)[i][j] = sin(0.46373398);
-			if (j == (mlx->p.x) && i == (mlx->p.y - 2))
-				(mlx->xr)[i][j] = -sin(0.46373398);
-			j++;
-		}
-		i++;
-	}
-}
-*/
 void	make_matrix(t_mlx *mlx, int h)
 {
 	int w;
@@ -82,6 +55,5 @@ void	make_matrix(t_mlx *mlx, int h)
 		(mlx->scrn)[i] = (t_point *)malloc(sizeof(t_point ) * (w + 1));
 		i++;
 	}
-//	make_rotate_matrix(mlx);
 	connect(mlx, mlx->p.y, mlx->p.x);
 }

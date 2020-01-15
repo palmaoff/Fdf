@@ -4,8 +4,8 @@
 
 #ifndef FDF_H
 # define FDF_H
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 1280
+# define HEIGHT 720
 
 # include "mlx.h"
 # include <unistd.h>
@@ -27,21 +27,23 @@ typedef struct	s_img
 
 typedef struct  s_point
 {
-    double			x;
-    double			y;
-    double			z;
+    float			x;
+    float			y;
+    float			z;
+	int 			color;
     struct	s_point	*next;
 }               t_point;
 
 typedef struct  s_cam
 {
-    double		x;
-    double		y;
-    double		z;
-	double		x_r;
-	double		y_r;
-	double		z_r;
-	double		di;
+    float		x;
+    float		y;
+    float		z;
+	float		x_r;
+	float		y_r;
+	float		z_r;
+	float		di;
+	int			color;
 }               t_cam;
 
 typedef struct  s_mlx
@@ -52,12 +54,11 @@ typedef struct  s_mlx
     t_cam		cam;
     t_point		p;
     t_point		*scn;
+	t_point		**mtrx;
     t_point		**scrn;
-    t_point		**mtrx;
-	int			**xr;
 }               t_mlx;
 
-void	draw_line(int x1, int y1, int x2, int y2, t_mlx *mlx);
+void	draw_line(t_point p1, t_point p2, t_mlx *mlx);
 void	img_new(t_mlx *mlx);
 int		input(int fd, t_mlx *mlx);
 void	print_map(t_mlx *mlx);
@@ -69,4 +70,5 @@ void	zoom_it(t_mlx *mlx, int x);
 void	print(t_mlx *mlx);
 void	rotate(t_mlx *mlx, int i, int j);
 void	print_points(t_point *strt); // tmp
+int     ft_htoi(const char *hex);
 #endif

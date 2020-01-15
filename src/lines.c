@@ -11,12 +11,13 @@ void lines(t_mlx *mlx)
 		j = 0;
 		while (j <= mlx->p.x)
 		{
-			if (i < mlx->p.y - 1)
-				draw_line(((mlx->scrn)[i][j].x), ((mlx->scrn)[i][j].y), ((mlx->scrn)[i + 1][j].x), ((mlx->scrn)[i + 1][j].y), mlx);
 			if (j < mlx->p.x)
-				draw_line(((mlx->scrn)[i][j].x), ((mlx->scrn)[i][j].y), ((mlx->scrn)[i][j + 1].x), ((mlx->scrn)[i][j + 1].y), mlx);
+				draw_line((mlx->scrn)[i][j], (mlx->scrn)[i][j + 1], mlx);
+			if (i < mlx->p.y - 1)
+				draw_line((mlx->scrn)[i][j], (mlx->scrn)[i + 1][j], mlx);
 			j++;
 		}
 		i++;
 	}
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img_ptr, 0, 0);
 }

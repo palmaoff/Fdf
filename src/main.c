@@ -28,9 +28,9 @@ int key_press(int keycode, t_mlx *mlx)
 		move_it(mlx, -3);
 	else if (keycode == 7) 
 		move_it(mlx, 3);
-	else if (keycode == 27) 
+	else if (keycode == 78) 
 		move_it(mlx, -4);
-	else if (keycode == 24) 
+	else if (keycode == 69) 
 		move_it(mlx, 4);
 	else if (keycode == 88) 
 		move_it(mlx, -5);
@@ -44,6 +44,8 @@ int key_press(int keycode, t_mlx *mlx)
 		move_it(mlx, 7);
 	else if (keycode == 87) 
 		move_it(mlx, -7);
+	else if (keycode == 82)
+		move_it(mlx, 8);
 	else
 	{
 		printf("%d\n", keycode);
@@ -94,12 +96,29 @@ int main(int ac, char **av)
 	}
 	fd = open(av[1], O_RDONLY);
 	init(&mlx);
-	input(fd, &mlx);
+
+	if (!input(fd, &mlx))
+	{
+		ft_putstr("invalid file\n");
+		return (0);
+	}
 	print_map(&mlx);
 	mlx_hook(mlx.win, 2, 0, key_press, &mlx);
 	mlx_hook(mlx.win, 4, 0, hook_mouse, &mlx);
 	mlx_hook(mlx.win, 17, 0, hook_exit, mlx.mlx);
 	mlx_loop(mlx.mlx);
 	free_mtr(&mlx);
+/*
+	t_point p1;
+	t_point p2;
+
+	p1.x = 150;
+	p1.y = 0;
+	p2.x = 0;
+	p2.y = 100;
+	draw_line(p1, p2, &mlx);
+	mlx_hook(mlx.win, 17, 0, hook_exit, mlx.mlx);
+	mlx_loop(mlx.mlx);
+*/
 	return (0);
 }

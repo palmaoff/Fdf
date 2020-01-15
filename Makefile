@@ -10,7 +10,8 @@ SRC =   main.c \
 		lines.c \
 		free_all.c \
 		move.c \
-		rotate.c
+		rotate.c \
+		ft_htoi.c
 
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 

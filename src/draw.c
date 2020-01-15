@@ -1,71 +1,77 @@
 #include "fdf.h"
 
-static void ft_swap(int *x1, int *x2)
+static void ft_swap(t_point *x1, t_point *x2)
 {
-	int tmp;
+	t_point tmp;
 
 	tmp = *x1;
 	*x1 = *x2;
 	*x2 = tmp;
 }
 
-static	void	draw_y(int x1, int y1, int x2, int y2, t_mlx *mlx)
+static	void	draw_y(t_point p1, t_point p2, t_mlx *mlx, int b)
 {
 	int x;
 	int y;
 	int dx;
 	int dy;
 
-	if (y1 > y2)
-    {
-      ft_swap(&x1, &x2);
-      ft_swap(&y1, &y2);
-    }
-	y = y1;
-	dx = x2 - x1;
-	dy = y2 - y1;
-	while(y <= y2 && dy != 0)
+	if (p1.y > p2.y)
 	{
-		x = x1 + dx * (y - y1) / dy;
+    	ft_swap(&p1, &p2);
+		b = 1;
+	}
+	y = (int)p1.y;
+	dx = (int)p2.x - p1.x;
+	dy = (int)p2.y - p1.y;
+	while(y <= p2.y && dy != 0)
+	{
+		x = (int)p1.x + dx * (y - (int)p1.y) / dy;
 		if (x > 0 && y > 0 && x < WIDTH && y < HEIGHT)
 			mlx->img.data[y * WIDTH + x] = 0xFF15a2;
 		y++;
 	}
+	if (b == 1)
+    	ft_swap(&p1, &p2);
 }
 
-static	void	draw_x(int x1, int y1, int x2, int y2, t_mlx *mlx)
+static	void	draw_x(t_point p1, t_point p2, t_mlx *mlx, int b)
 {
 	int x;
 	int y;
 	int dx;
 	int dy;
 
-	if (x1 > x2)
+	if (p1.x > p2.x)
     {
-      ft_swap(&x1, &x2);
-      ft_swap(&y1, &y2);
-    }
-	x = x1;
-	dx = x2 - x1;
-	dy = y2 - y1;
-	while(x <= x2 && dx != 0)
+    	ft_swap(&p1, &p2);
+		b = 1;
+	}
+	x = (int)p1.x;
+	dx = (int)p2.x - p1.x;
+	dy = (int)p2.y - p1.y;
+	while(x <= p2.x && dx != 0)
 	{
-		y = y1 + dy * (x - x1) / dx;
+		y = (int)p1.y + dy * (x - (int)p1.x) / dx;
 		if (x > 0 && y > 0 && x < WIDTH && y < HEIGHT)
+		{
 			mlx->img.data[y * WIDTH + x] = 0xFF15a2;
+		}
 		x++;
 	}
+	if (b == 1)
+    	ft_swap(&p1, &p2);
 }
 
-void	draw_line(int x1, int y1, int x2, int y2, t_mlx *mlx)
+void	draw_line(t_point p1, t_point p2, t_mlx *mlx)
 {
 	int dx;
 	int dy;
 
-	dx = x2 - x1;
-	dy = y2 - y1;
-	if (abs(dx) >= abs(dy))
-		draw_x(x1, y1, x2, y2, mlx);
+	dx = (int)(p2.x - p1.x);
+	dy = (int)(p2.y - p1.y);
+	if (abs(dx) < abs(dy))
+		draw_y(p1, p2, mlx, 0);
 	else
-		draw_y(x1, y1, x2, y2, mlx);
+		draw_x(p1, p2, mlx, 0);
 }

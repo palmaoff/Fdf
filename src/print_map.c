@@ -16,7 +16,6 @@ static void iso(t_point *scrn, t_mlx *mlx)
 
 static void screen_map(t_point *scn, t_point *scrn, t_mlx *mlx)
 {
-//	(void)mlx;
     scrn->x = scn->x;
 	scrn->y = scn->y;
 	scrn->z = scn->z * mlx->cam.di;

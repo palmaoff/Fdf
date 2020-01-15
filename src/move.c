@@ -21,6 +21,13 @@ void	move_it(t_mlx *mlx, int x)
 	else if (x == 6 || x == -6)
 		mlx->cam.y_r += x / 6 * 0.1;
 	else if (x == 7 || x == -7)
-		mlx->cam.z_r += x / 7 * 0.1;		
+		mlx->cam.z_r += x / 7 * 0.1;	
+	else if (x == 8)
+	{
+		mlx->cam.x_r = 0;
+		mlx->cam.y_r = 0;
+		mlx->cam.z_r = 0;
+		mlx->cam.di = 1;
+	}	
 	print_map(mlx);
 }
