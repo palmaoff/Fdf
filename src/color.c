@@ -18,15 +18,15 @@ int get_light(int start, int end, double percentage)
 	return ((int)((1 - percentage) * start + percentage * end));
 }
 
-int get_color(t_point current, t_point start, t_point end, t_point delta)
+int get_color(t_dot current, t_point start, t_point end, t_dot delta)
 {
 	int     red;
 	int     green;
 	int     blue;
 	double  percentage;
 
-	if (current.color == end.color)
-		return (current.color);
+	if (start.color == end.color)
+		return (start.color);
 	if (delta.x > delta.y)
 		percentage = percent(start.x, end.x, current.x);
 	else

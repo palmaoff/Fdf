@@ -79,7 +79,7 @@ void init(t_mlx *mlx)
 	mlx->cam.x_r = 0;
 	mlx->cam.y_r = 0;
 	mlx->cam.z_r = 0;
-	mlx->cam.color = 0xFF15a2;
+	mlx->cam.color = 0;
 }
 
 int main(int ac, char **av)

@@ -11,7 +11,8 @@ SRC =   main.c \
 		free_all.c \
 		move.c \
 		rotate.c \
-		ft_htoi.c
+		ft_htoi.c \
+		color.c
 
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 

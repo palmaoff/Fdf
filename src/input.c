@@ -41,8 +41,13 @@ t_point	*point_new(int x, int y, int z, t_mlx *mlx)
 	p->y = y;
 	p->z = z;
 	p->next = NULL;
-	(*p).color = mlx->cam.color;
-	mlx->cam.color = 0xEEE8AA;
+	if (mlx->cam.color != 0)
+		(*p).color = mlx->cam.color;
+	else if (z != 0)
+		(*p).color = 0xF98C61 + z * 10;
+	else 
+		(*p).color = 0x66151C;
+	mlx->cam.color = 0;
 	return (p);
 }
 

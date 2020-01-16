@@ -46,6 +46,12 @@ typedef struct  s_point
     struct	s_point	*next;
 }               t_point;
 
+typedef struct  s_dot
+{
+    int			x;
+    int			y;
+}               t_dot;
+
 typedef struct  s_cam
 {
     float		x;
@@ -83,5 +89,5 @@ void	print(t_mlx *mlx);
 void	rotate(t_mlx *mlx, int i, int j);
 void	print_points(t_point *strt); // tmp
 int     ft_htoi(const char *hex);
-int 	get_color(t_point current, t_point start, t_point end, t_point delta);
+int 	get_color(t_dot current, t_point start, t_point end, t_dot delta);
 #endif
