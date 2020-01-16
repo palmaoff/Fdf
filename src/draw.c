@@ -29,7 +29,7 @@ static	void	draw_y(t_point p1, t_point p2, t_mlx *mlx, int b)
 	while(crnt.y < p2.y && dlt.y != 0)
 	{
 		crnt.x = (int)p1.x + dlt.x * (crnt.y - (int)p1.y) / dlt.y;
-		if (crnt.x > 0 && crnt.y > 0 && crnt.x < WIDTH && crnt.y < HEIGHT)
+		if (crnt.x >= MENU_WIDHT && crnt.y > 0 && crnt.x < WIDTH && crnt.y < HEIGHT)
 			mlx->img.data[crnt.y * WIDTH + crnt.x] = get_color(crnt, p1, p2, dlt);
 		crnt.y++;
 	}
@@ -57,7 +57,7 @@ static	void	draw_x(t_point p1, t_point p2, t_mlx *mlx, int b)
 	while(crnt.x < p2.x && dlt.x != 0)
 	{
 		crnt.y = (int)p1.y + dlt.y * (crnt.x - (int)p1.x) / dlt.x;
-		if (crnt.x > 0 && crnt.y > 0 && crnt.x < WIDTH && crnt.y < HEIGHT)
+		if (crnt.x >= MENU_WIDHT && crnt.y > 0 && crnt.x < WIDTH && crnt.y < HEIGHT)
 			mlx->img.data[crnt.y * WIDTH + crnt.x] = get_color(crnt, p1, p2, dlt);
 		crnt.x++;
 	}

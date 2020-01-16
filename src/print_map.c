@@ -27,6 +27,7 @@ void	print_map(t_mlx *mlx)
 	int i;
 	int j;
 
+	background(mlx);
 	i = 0;
 	while(i < mlx->p.y)
 	{
@@ -42,4 +43,5 @@ void	print_map(t_mlx *mlx)
 	}
 	lines(mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img_ptr, 0, 0);
+	print_menu(mlx);
 }

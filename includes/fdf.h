@@ -14,10 +14,39 @@
 # define FDF_H
 # define WIDTH 1280
 # define HEIGHT 720
+# define MENU_WIDHT 300
 
-# define WHITE 0xffffff;
-# define BLACK 0x000000;
-# define RED 0xe80c0c;
+/*
+** Colors
+*/
+
+# define WHITE 0xffffff
+# define BLACK 0x000000
+# define RED 0xe80c0c
+# define MIDDLE_GRAY 0x7a7a7a
+# define VERY_DARK_GRAY 0x0d0d0d
+# define MANN_CO_ORANGE 0xCF7336
+# define AUSTRALIUM_GOLD 0xE7B53B
+
+
+/*
+** Keys
+*/
+
+# define M 46
+
+/*
+** Menu
+*/
+
+# define MOVEMENT "   Up/Down/Left/Right"
+# define MOVEMENT1 "   Ar.Up/Ar.Down/Ar.L/Ar.R"
+# define R_MOVEMENT "   Up/Down/Left/Right"
+# define R_MOVEMENT1 "   Ar.Down/Ar.Up/Ar.R/Ar.L"
+# define Z_SHIFT "   Z-/Z+"
+# define Z_SHIFT1 "   Z/X"
+# define ZOOM_IN_OUT "   (numpad)+/-"
+
 
 # include "mlx.h"
 # include <unistd.h>
@@ -66,6 +95,7 @@ typedef struct  s_cam
 
 typedef struct  s_mlx
 {
+	char		*file;
     void		*mlx;
     void		*win;
     t_img		img;
@@ -90,4 +120,6 @@ void	rotate(t_mlx *mlx, int i, int j);
 void	print_points(t_point *strt); // tmp
 int     ft_htoi(const char *hex);
 int 	get_color(t_dot current, t_point start, t_point end, t_dot delta);
+void	print_menu(t_mlx *mlx);
+void	background(t_mlx *mlx);
 #endif

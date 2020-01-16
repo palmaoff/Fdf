@@ -72,7 +72,7 @@ void init(t_mlx *mlx)
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "42");
 	img_new(mlx);
-	mlx->cam.x = WIDTH / 2;
+	mlx->cam.x = (WIDTH + MENU_WIDHT)/ 2;
 	mlx->cam.y = HEIGHT / 2;
 	mlx->cam.z = 20;
 	mlx->cam.di = 1;
@@ -94,7 +94,7 @@ int main(int ac, char **av)
 	}
 	fd = open(av[1], O_RDONLY);
 	init(&mlx);
-
+	mlx.file = av[1];
 	if (!input(fd, &mlx))
 	{
 		ft_putstr("invalid file\n");
@@ -104,6 +104,7 @@ int main(int ac, char **av)
 	mlx_hook(mlx.win, 2, 0, key_press, &mlx);
 	mlx_hook(mlx.win, 4, 0, hook_mouse, &mlx);
 	mlx_hook(mlx.win, 17, 0, hook_exit, mlx.mlx);
+	print_menu(&mlx);
 	mlx_loop(mlx.mlx);
 	free_mtr(&mlx);
 	return (0);
