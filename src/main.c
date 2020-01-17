@@ -12,52 +12,26 @@
 
 #include "../includes/fdf.h"
 
-int key_press(int keycode, t_mlx *mlx)
-{
-//	printf("%d\n", keycode);
-	if (keycode == 53)
-		exit(0);
-	else if (keycode == 13 || keycode == 125)
-		move_it(mlx, 1);
-	else if (keycode == 0 || keycode == 124)
-		move_it(mlx, 2);
-	else if (keycode == 1 || keycode == 126)
-		move_it(mlx, -1);
-	else if (keycode == 2 || keycode == 123)
-		move_it(mlx, -2);
-	else if (keycode == 6) 
-		move_it(mlx, -3);
-	else if (keycode == 7) 
-		move_it(mlx, 3);
-	else if (keycode == 78) 
-		move_it(mlx, -4);
-	else if (keycode == 69) 
-		move_it(mlx, 4);
-	else if (keycode == 88) 
-		move_it(mlx, -5);
-	else if (keycode == 85) 
-		move_it(mlx, 5);
-	else if (keycode == 83) 
-		move_it(mlx, 6);
-	else if (keycode == 84) 
-		move_it(mlx, -6);
-	else if (keycode == 86) 
-		move_it(mlx, 7);
-	else if (keycode == 87) 
-		move_it(mlx, -7);
-	else if (keycode == 82)
-		move_it(mlx, 8);
-	return (0);
-}
-
 int hook_mouse(int button, int x, int y, t_mlx *mlx)
 {
 	x = 0;
 	y = 0;
+
+	mlx_destroy_image(mlx->mlx, (*mlx).img.img_ptr);
+	img_new(mlx);
 	if (button == 4) 
-		move_it(mlx, 4);
+	{
+		if (mlx->cam.z > 0)
+			mlx->cam.z += 1;
+	}
 	if (button == 5) 
-		move_it(mlx, -4);
+	{
+		if (mlx->cam.z > 0)
+			mlx->cam.z -= 1;
+	}
+	if (mlx->cam.z < 1)
+		mlx->cam.z = 1;
+	print_map(mlx);
 	return (0);
 }
 

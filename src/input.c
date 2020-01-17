@@ -1,10 +1,8 @@
 #include "../includes/fdf.h"
 
-void save_color(char *a, t_mlx *mlx)
+static void save_color(char *a, t_mlx *mlx)
 {
-	printf("%s\n", a);
 	mlx->cam.color = ft_htoi(a);
-	printf("%d\n", ft_htoi(a));
 }
 
 int check_digit(char *a, t_mlx *mlx)
@@ -101,22 +99,3 @@ int	input(int fd, t_mlx *mlx)
 	make_matrix(mlx, y);
 	return (1);
 }
-
-/*
-int main(int ac, char **av)
-{
-	t_mlx mlx;
-	int fd;
-
-	init(&mlx);
-	if (ac != 2)
-	{
-		ft_putstr("error: not enough arguments");
-		return (0);
-	}
-	fd = open(av[1], O_RDONLY);
-	printf("%d\n", input(fd, &mlx));
-	free_mtr(&mlx);
-	return (0);
-}
-*/
