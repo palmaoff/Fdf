@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wquirrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/17 21:56:41 by wquirrel          #+#    #+#             */
+/*   Updated: 2020/01/17 21:56:44 by wquirrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-static void ft_swap(t_point *x1, t_point *x2)
+static void	ft_swap(t_point *x1, t_point *x2)
 {
 	t_point tmp;
 
@@ -9,63 +21,59 @@ static void ft_swap(t_point *x1, t_point *x2)
 	*x2 = tmp;
 }
 
-static	void	draw_y(t_point p1, t_point p2, t_mlx *mlx, int b)
+static void	draw_y(t_point p1, t_point p2, t_mlx *mlx, int b)
 {
 	t_dot dlt;
 	t_dot crnt;
-	// int x;
-	// int y;
-	// int dx;
-	// int dy;
 
 	if (p1.y > p2.y)
 	{
-    	ft_swap(&p1, &p2);
+		ft_swap(&p1, &p2);
 		b = 1;
 	}
 	crnt.y = (int)p1.y;
 	dlt.x = (int)p2.x - p1.x;
 	dlt.y = (int)p2.y - p1.y;
-	while(crnt.y < p2.y && dlt.y != 0)
+	while (crnt.y < p2.y && dlt.y != 0)
 	{
 		crnt.x = (int)p1.x + dlt.x * (crnt.y - (int)p1.y) / dlt.y;
-		if (crnt.x >= MENU_WIDHT && crnt.y > 0 && crnt.x < WIDTH && crnt.y < HEIGHT)
-			mlx->img.data[crnt.y * WIDTH + crnt.x] = get_color(crnt, p1, p2, dlt);
+		if (crnt.x >= MENU_WIDHT && crnt.y > 0 && crnt.x < WIDTH
+		&& crnt.y < HEIGHT)
+			mlx->img.data[crnt.y * WIDTH + crnt.x] =
+					get_color(crnt, p1, p2, dlt);
 		crnt.y++;
 	}
 	if (b == 1)
-    	ft_swap(&p1, &p2);
+		ft_swap(&p1, &p2);
 }
 
-static	void	draw_x(t_point p1, t_point p2, t_mlx *mlx, int b)
+static void	draw_x(t_point p1, t_point p2, t_mlx *mlx, int b)
 {
 	t_dot dlt;
 	t_dot crnt;
-//	int x;
-//	int y;
-//	int dx;
-//	int dy;
 
 	if (p1.x > p2.x)
-    {
-    	ft_swap(&p1, &p2);
+	{
+		ft_swap(&p1, &p2);
 		b = 1;
 	}
 	crnt.x = (int)p1.x;
 	dlt.x = (int)p2.x - p1.x;
 	dlt.y = (int)p2.y - p1.y;
-	while(crnt.x < p2.x && dlt.x != 0)
+	while (crnt.x < p2.x && dlt.x != 0)
 	{
 		crnt.y = (int)p1.y + dlt.y * (crnt.x - (int)p1.x) / dlt.x;
-		if (crnt.x >= MENU_WIDHT && crnt.y > 0 && crnt.x < WIDTH && crnt.y < HEIGHT)
-			mlx->img.data[crnt.y * WIDTH + crnt.x] = get_color(crnt, p1, p2, dlt);
+		if (crnt.x >= MENU_WIDHT && crnt.y > 0 && crnt.x < WIDTH
+		&& crnt.y < HEIGHT)
+			mlx->img.data[crnt.y * WIDTH + crnt.x] =
+					get_color(crnt, p1, p2, dlt);
 		crnt.x++;
 	}
 	if (b == 1)
-    	ft_swap(&p1, &p2);
+		ft_swap(&p1, &p2);
 }
 
-void	draw_line(t_point p1, t_point p2, t_mlx *mlx)
+void		draw_line(t_point p1, t_point p2, t_mlx *mlx)
 {
 	int dx;
 	int dy;
@@ -74,7 +82,6 @@ void	draw_line(t_point p1, t_point p2, t_mlx *mlx)
 		mlx->p.color = p1.color;
 	else
 		mlx->p.color = 0xEEE8AA;
-	
 	dx = (int)(p2.x - p1.x);
 	dy = (int)(p2.y - p1.y);
 	if (abs(dx) < abs(dy))
