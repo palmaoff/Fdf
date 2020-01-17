@@ -25,6 +25,7 @@
 # define RED 0xe80c0c
 # define MIDDLE_GRAY 0x7a7a7a
 # define VERY_DARK_GRAY 0x0d0d0d
+# define ORANGE 0xFFA500
 # define MANN_CO_ORANGE 0xCF7336
 # define AUSTRALIUM_GOLD 0xE7B53B
 
@@ -46,7 +47,17 @@
 # define Z_SHIFT "   Z-/Z+"
 # define Z_SHIFT1 "   Z/X"
 # define ZOOM_IN_OUT "   (numpad)+/-"
+# define ROTATION_X "   X:(numpad) 6/3"
+# define ROTATION_Y "   Y:(numpad) 4/5"
+# define ROTATION_Z "   Z:(numpad) 1/2"
+# define RESET_BTN "   (numpad) 0"
 
+/*
+** Other
+*/
+
+# define X_START_POS (WIDTH + MENU_WIDHT) / 2
+# define Y_START_POS HEIGHT / 2
 
 # include "mlx.h"
 # include <unistd.h>
