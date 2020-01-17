@@ -46,7 +46,7 @@
 # define R_MOVEMENT1 "   Ar.Down/Ar.Up/Ar.R/Ar.L"
 # define Z_SHIFT "   Z-/Z+"
 # define Z_SHIFT1 "   Z/X"
-# define ZOOM_IN_OUT "   (numpad)+/-"
+# define ZOOM_IN_OUT "   (numpad)+/-|(m. wheel)"
 # define ROTATION_X "   X:(numpad) 6/3"
 # define ROTATION_Y "   Y:(numpad) 1/2"
 # define ROTATION_Z "   Z:(numpad) 4/5"
