@@ -134,5 +134,6 @@ int 	get_color(t_dot current, t_point start, t_point end, t_dot delta);
 void	print_menu(t_mlx *mlx);
 void	background(t_mlx *mlx);
 int		key_press(int keycode, t_mlx *mlx);
+void	die(char *str);
 
 #endif

@@ -4,6 +4,7 @@ int     ft_htoi(const char *hex)
 {
 	int i;
 	int res;
+
 	i = 0;
 	res = 0;
 	if (hex[i] == '\0' || hex[i] == 27 || hex[i] == '\200'
@@ -16,11 +17,11 @@ int     ft_htoi(const char *hex)
 			res = 16 * res + (hex[i] - '0');
 		else if(hex[i] >= 'a' && hex[i] <= 'f')
 			res = 16 * res + (hex[i] - 87);
-	else if (hex[i] >= 'A' && hex[i] <= 'F')
-		res = 16 * res + (hex[i] - 55);
-	else
-    	return(0);
-	i++;
+		else if (hex[i] >= 'A' && hex[i] <= 'F')
+			res = 16 * res + (hex[i] - 55);
+		else
+    		return(0);
+		i++;
 	}
 	return(res);
 }

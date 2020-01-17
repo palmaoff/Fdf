@@ -1,8 +1,10 @@
 #include "../includes/fdf.h"
 
-static void save_color(char *a, t_mlx *mlx)
+static int save_color(char *a, t_mlx *mlx)
 {
-	mlx->cam.color = ft_htoi(a);
+	if (!(mlx->cam.color = ft_htoi(a)))
+		return (0);
+	return (1);
 }
 
 int check_digit(char *a, t_mlx *mlx)
@@ -14,7 +16,10 @@ int check_digit(char *a, t_mlx *mlx)
 		if (!ft_isdigit(*a) && *a != '-' && *a != '+')
 			return (0);
 		if ((p = ft_strchr(a, ',')))
-			save_color(p + 1, mlx);
+		{
+			if (!(save_color(p + 1, mlx)))
+				return (0);
+		}
 		a++;
 	}
 	return (1);
@@ -34,7 +39,8 @@ t_point	*point_new(int x, int y, int z, t_mlx *mlx)
 {
 	t_point *p;
 
-	p = (t_point *)malloc(sizeof(t_point));
+	if (!(p = (t_point *)malloc(sizeof(t_point))))
+		die("malloc error");
 	p->x = x;
 	p->y = y;
 	p->z = z;

@@ -48,12 +48,16 @@ void	make_matrix(t_mlx *mlx, float h)
 	w = how_long(mlx->scn);
 	mlx->p.x = w;
 	mlx->p.y = h;
-	mlx->mtrx = (t_point **)malloc(sizeof(t_point *) * h);
-	mlx->scrn = (t_point **)malloc(sizeof(t_point *) * h);
+	if (!(mlx->mtrx = (t_point **)malloc(sizeof(t_point *) * h)))
+		die("malloc error\n");
+	if (!(mlx->scrn = (t_point **)malloc(sizeof(t_point *) * h)))
+		die("malloc error\n");
 	while (i < h)
 	{
-		(mlx->mtrx)[i] = (t_point *)malloc(sizeof(t_point ) * (w + 1));
-		(mlx->scrn)[i] = (t_point *)malloc(sizeof(t_point ) * (w + 1));
+		if (!((mlx->mtrx)[i] = (t_point *)malloc(sizeof(t_point ) * (w + 1))))
+			die("malloc error\n");
+		if (!((mlx->scrn)[i] = (t_point *)malloc(sizeof(t_point ) * (w + 1))))
+			die("malloc error\n");
 		i++;
 	}
 	connect(mlx, mlx->p.y, mlx->p.x);
