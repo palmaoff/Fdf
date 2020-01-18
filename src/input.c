@@ -41,11 +41,15 @@ static	int		check_digit(char *a, t_mlx *mlx)
 
 static	void	dfree(char **a)
 {
-	while (*a)
+	int i;
+
+	i = 0;
+	while (a[i])
 	{
-		free(*a);
-		a++;
+		free(a[i]);
+		i++;
 	}
+	free(a);
 	a = NULL;
 }
 
