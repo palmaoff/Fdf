@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   matrix.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eflorean <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 15:48:52 by eflorean          #+#    #+#             */
+/*   Updated: 2020/01/18 15:48:54 by eflorean         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-static int how_long(t_point *p)
+static	int		how_long(t_point *p)
 {
 	int i;
 
@@ -15,11 +27,11 @@ static int how_long(t_point *p)
 	return (i);
 }
 
-static void connect(t_mlx *mlx, float h, float w)
+static	void	connect(t_mlx *mlx, float h, float w)
 {
-	int i;
-	int j;
-	t_point *tmp; 
+	int		i;
+	int		j;
+	t_point *tmp;
 
 	tmp = mlx->scn;
 	i = 0;
@@ -39,10 +51,10 @@ static void connect(t_mlx *mlx, float h, float w)
 	}
 }
 
-void	make_matrix(t_mlx *mlx, float h)
+void			make_matrix(t_mlx *mlx, float h)
 {
-	float w;
-	int i;
+	float	w;
+	int		i;
 
 	i = 0;
 	w = how_long(mlx->scn);

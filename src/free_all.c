@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_all.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eflorean <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 15:36:07 by eflorean          #+#    #+#             */
+/*   Updated: 2020/01/18 15:36:12 by eflorean         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fdf.h"
 
-static	void free_lists(t_point *strt)
+static	void	free_lists(t_point *strt)
 {
 	t_point *tmp;
 
-	while(strt->next != NULL)
+	while (strt->next != NULL)
 	{
 		tmp = strt;
 		strt = strt->next;
@@ -12,7 +24,7 @@ static	void free_lists(t_point *strt)
 	}
 }
 
-void free_mtr(t_mlx *mlx)
+void			free_mtr(t_mlx *mlx)
 {
 	int i;
 

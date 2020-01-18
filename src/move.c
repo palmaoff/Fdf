@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eflorean <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 15:52:22 by eflorean          #+#    #+#             */
+/*   Updated: 2020/01/18 15:52:24 by eflorean         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-void die(char *str)
+void	die(char *str)
 {
 	ft_putstr(str);
 	exit(0);
 }
 
-int key_press_too_too(int keycode, t_mlx *mlx)
+int		key_press_too_too(int keycode, t_mlx *mlx)
 {
 	if (keycode == 82)
 	{
@@ -24,30 +36,30 @@ int key_press_too_too(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-int key_press_too(int keycode, t_mlx *mlx)
+int		key_press_too(int keycode, t_mlx *mlx)
 {
-	if (keycode == 69) 
+	if (keycode == 69)
 	{
 		if (mlx->cam.z > 0)
 			mlx->cam.z += 1;
 	}
-	else if (keycode == 88) 
+	else if (keycode == 88)
 		mlx->cam.x_r -= 0.1;
-	else if (keycode == 85) 
+	else if (keycode == 85)
 		mlx->cam.x_r += 0.1;
-	else if (keycode == 83) 
+	else if (keycode == 83)
 		mlx->cam.y_r += 0.1;
-	else if (keycode == 84) 
+	else if (keycode == 84)
 		mlx->cam.y_r -= 0.1;
-	else if (keycode == 86) 
+	else if (keycode == 86)
 		mlx->cam.z_r += 0.1;
-	else if (keycode == 87) 
+	else if (keycode == 87)
 		mlx->cam.z_r -= 0.1;
 	key_press_too_too(keycode, mlx);
 	return (0);
 }
 
-int key_press(int keycode, t_mlx *mlx)
+int		key_press(int keycode, t_mlx *mlx)
 {
 	mlx_destroy_image(mlx->mlx, (*mlx).img.img_ptr);
 	img_new(mlx);
@@ -61,11 +73,11 @@ int key_press(int keycode, t_mlx *mlx)
 		mlx->cam.x += 5;
 	else if (keycode == 2 || keycode == 123)
 		mlx->cam.x -= 5;
-	else if (keycode == 6) 
+	else if (keycode == 6)
 		mlx->cam.di -= 0.1;
-	else if (keycode == 7) 
+	else if (keycode == 7)
 		mlx->cam.di += 0.1;
-	else if (keycode == 78) 
+	else if (keycode == 78)
 	{
 		if (mlx->cam.z > 0)
 			mlx->cam.z -= 1;

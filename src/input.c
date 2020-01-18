@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eflorean <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 15:42:19 by eflorean          #+#    #+#             */
+/*   Updated: 2020/01/18 15:42:20 by eflorean         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fdf.h"
 
-static int save_color(char *a, t_mlx *mlx)
+static	int		save_color(char *a, t_mlx *mlx)
 {
 	if (!(mlx->cam.color = ft_htoi(a)))
 		return (0);
 	return (1);
 }
 
-int check_digit(char *a, t_mlx *mlx)
+static	int		check_digit(char *a, t_mlx *mlx)
 {
 	char *p;
 
@@ -25,7 +37,7 @@ int check_digit(char *a, t_mlx *mlx)
 	return (1);
 }
 
-void dfree(char **a)
+static	void	dfree(char **a)
 {
 	while (*a)
 	{
@@ -35,7 +47,7 @@ void dfree(char **a)
 	a = NULL;
 }
 
-t_point	*point_new(int x, int y, int z, t_mlx *mlx)
+static	t_point	*point_new(int x, int y, int z, t_mlx *mlx)
 {
 	t_point *p;
 
@@ -49,17 +61,17 @@ t_point	*point_new(int x, int y, int z, t_mlx *mlx)
 		(*p).color = mlx->cam.color;
 	else if (z != 0)
 		(*p).color = 0xF98C61 + z * 10;
-	else 
+	else
 		(*p).color = 0x66151C;
 	mlx->cam.color = 0;
 	return (p);
 }
 
-int		temp(char **a, int y, t_point **pt, t_mlx *mlx)
+static	int		temp(char **a, int y, t_point **pt, t_mlx *mlx)
 {
-	static int w;
-	t_point *tmp;
-	int x;
+	static int	w;
+	t_point		*tmp;
+	int			x;
 
 	x = 0;
 	while (a[x])
@@ -83,12 +95,12 @@ int		temp(char **a, int y, t_point **pt, t_mlx *mlx)
 	return ((w != x) ? 0 : w);
 }
 
-int	input(int fd, t_mlx *mlx)
+int			input(int fd, t_mlx *mlx)
 {
-	char *line;
-	char **a;
-	int y;
-	t_point *pt;
+	char	*line;
+	char	**a;
+	int		y;
+	t_point	*pt;
 
 	pt = NULL;
 	y = 0;

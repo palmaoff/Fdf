@@ -12,19 +12,18 @@
 
 #include "../includes/fdf.h"
 
-int hook_mouse(int button, int x, int y, t_mlx *mlx)
+int		hook_mouse(int button, int x, int y, t_mlx *mlx)
 {
 	x = 0;
 	y = 0;
-
 	mlx_destroy_image(mlx->mlx, (*mlx).img.img_ptr);
 	img_new(mlx);
-	if (button == 4) 
+	if (button == 4)
 	{
 		if (mlx->cam.z > 0)
 			mlx->cam.z += 1;
 	}
-	if (button == 5) 
+	if (button == 5)
 	{
 		if (mlx->cam.z > 0)
 			mlx->cam.z -= 1;
@@ -35,18 +34,18 @@ int hook_mouse(int button, int x, int y, t_mlx *mlx)
 	return (0);
 }
 
-int hook_exit(void *param)
+int		hook_exit(void *param)
 {
-    (void)param;
-    exit(0);
+	(void)param;
+	exit(0);
 }
 
-void init(t_mlx *mlx)
+void	init(t_mlx *mlx)
 {
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "42");
 	img_new(mlx);
-	mlx->cam.x = (WIDTH + MENU_WIDHT)/ 2;
+	mlx->cam.x = (WIDTH + MENU_WIDHT) / 2;
 	mlx->cam.y = HEIGHT / 2;
 	mlx->cam.z = 20;
 	mlx->cam.di = 1;
@@ -56,10 +55,10 @@ void init(t_mlx *mlx)
 	mlx->cam.color = 0;
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
-	t_mlx mlx;
-	int fd;
+	t_mlx	mlx;
+	int		fd;
 
 	if (ac != 2)
 	{

@@ -1,35 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eflorean <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 15:54:10 by eflorean          #+#    #+#             */
+/*   Updated: 2020/01/18 15:54:11 by eflorean         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-static void iso(t_point *scrn, t_mlx *mlx)
+static	void	iso(t_point *scrn, t_mlx *mlx)
 {
-    int pre_x;
-    int pre_y;
+	int	pre_x;
+	int	pre_y;
 
 	scrn->x *= mlx->cam.z;
 	scrn->z *= mlx->cam.z;
 	scrn->y *= mlx->cam.z;
-    pre_x = scrn->x;
-    pre_y = scrn->y;
-    scrn->x = (pre_x - pre_y) * cos(0.46373398) + mlx->cam.x;
-    scrn->y = -scrn->z + (pre_y + pre_x) * sin(0.46373398) + mlx->cam.y;
+	pre_x = scrn->x;
+	pre_y = scrn->y;
+	scrn->x = (pre_x - pre_y) * cos(0.46373398) + mlx->cam.x;
+	scrn->y = -scrn->z + (pre_y + pre_x) * sin(0.46373398) + mlx->cam.y;
 }
 
-static void screen_map(t_point *scn, t_point *scrn, t_mlx *mlx)
+static	void	screen_map(t_point *scn, t_point *scrn, t_mlx *mlx)
 {
-    scrn->x = scn->x;
+	scrn->x = scn->x;
 	scrn->y = scn->y;
 	scrn->z = scn->z * mlx->cam.di;
 	scrn->color = scn->color;
 }
 
-void	print_map(t_mlx *mlx)
+void			print_map(t_mlx *mlx)
 {
 	int i;
 	int j;
 
 	background(mlx);
 	i = 0;
-	while(i < mlx->p.y)
+	while (i < mlx->p.y)
 	{
 		j = 0;
 		while (j <= mlx->p.x)
