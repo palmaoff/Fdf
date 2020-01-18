@@ -60,7 +60,6 @@
 
 # include "mlx.h"
 # include <unistd.h>
-# include <stdio.h> // KILL ME
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>

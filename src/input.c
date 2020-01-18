@@ -23,6 +23,8 @@ static	int		check_digit(char *a, t_mlx *mlx)
 {
 	char *p;
 
+	if (!ft_isdigit(*a) && *a != '-' && *a != '+')
+		return (0);
 	while (*a != '\0' && *a != ',')
 	{
 		if (!ft_isdigit(*a) && *a != '-' && *a != '+')
@@ -114,6 +116,8 @@ int			input(int fd, t_mlx *mlx)
 		y++;
 	}
 	free(line);
+	if (y < 2)
+		return (0);
 	make_matrix(mlx, y);
 	return (1);
 }
