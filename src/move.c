@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h> // KILL ME
 
 void	die(char *str)
 {
@@ -33,23 +32,23 @@ static	int		key_press_too_too(int keycode, t_mlx *mlx)
 	}
 	if (mlx->cam.z < 1)
 		mlx->cam.z = 1;
-	if (keycode == 89)
+	if (keycode == 35)
 	{
 		mlx->cam.x_r = -0.563734;
 		mlx->cam.y_r = 0;
 		mlx->cam.z_r = -0.785398;
 	}
-	if (keycode == 91)
+	if (keycode == 34)
 	{
 		mlx->cam.x_r = 0;
 		mlx->cam.y_r = 0;
 		mlx->cam.z_r = 0;
 	}
-	if (keycode == 92)
+	if (keycode == 8)
 	{
-		mlx->cam.x_r = 0;
+		mlx->cam.x_r = 1.036266;
 		mlx->cam.y_r = 0;
-		mlx->cam.z_r = 0;
+		mlx->cam.z_r = -0.785398;
 	}
 	print_map(mlx);
 	return (0);
