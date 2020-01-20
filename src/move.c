@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h> // KILL ME
 
 void	die(char *str)
 {
@@ -18,7 +19,7 @@ void	die(char *str)
 	exit(0);
 }
 
-int		key_press_too_too(int keycode, t_mlx *mlx)
+static	int		key_press_too_too(int keycode, t_mlx *mlx)
 {
 	if (keycode == 82)
 	{
@@ -32,11 +33,29 @@ int		key_press_too_too(int keycode, t_mlx *mlx)
 	}
 	if (mlx->cam.z < 1)
 		mlx->cam.z = 1;
+	if (keycode == 89)
+	{
+		mlx->cam.x_r = -0.563734;
+		mlx->cam.y_r = 0;
+		mlx->cam.z_r = -0.785398;
+	}
+	if (keycode == 91)
+	{
+		mlx->cam.x_r = 0;
+		mlx->cam.y_r = 0;
+		mlx->cam.z_r = 0;
+	}
+	if (keycode == 92)
+	{
+		mlx->cam.x_r = 0;
+		mlx->cam.y_r = 0;
+		mlx->cam.z_r = 0;
+	}
 	print_map(mlx);
 	return (0);
 }
 
-int		key_press_too(int keycode, t_mlx *mlx)
+static	int		key_press_too(int keycode, t_mlx *mlx)
 {
 	if (keycode == 69)
 	{

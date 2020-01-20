@@ -12,14 +12,7 @@
 
 #include "../includes/fdf.h"
 
-static	int		save_color(char *a, t_mlx *mlx)
-{
-	if (!(mlx->cam.color = ft_htoi(a)))
-		return (0);
-	return (1);
-}
-
-static	int		check_digit(char *a, t_mlx *mlx)
+static	int			check_digit(char *a, t_mlx *mlx)
 {
 	char *p;
 
@@ -31,7 +24,7 @@ static	int		check_digit(char *a, t_mlx *mlx)
 			return (0);
 		if ((p = ft_strchr(a, ',')))
 		{
-			if (!(save_color(p + 1, mlx)))
+			if (!(mlx->cam.color = ft_htoi(p + 1)))
 				return (0);
 		}
 		a++;
@@ -39,7 +32,7 @@ static	int		check_digit(char *a, t_mlx *mlx)
 	return (1);
 }
 
-static	void	dfree(char **a)
+static	void		dfree(char **a)
 {
 	int i;
 
@@ -53,7 +46,7 @@ static	void	dfree(char **a)
 	a = NULL;
 }
 
-static	t_point	*point_new(int x, int y, int z, t_mlx *mlx)
+static	t_point		*point_new(int x, int y, int z, t_mlx *mlx)
 {
 	t_point *p;
 
@@ -73,7 +66,7 @@ static	t_point	*point_new(int x, int y, int z, t_mlx *mlx)
 	return (p);
 }
 
-static	int		temp(char **a, int y, t_point **pt, t_mlx *mlx)
+static	int			temp(char **a, int y, t_point **pt, t_mlx *mlx)
 {
 	static int	w;
 	t_point		*tmp;
@@ -92,7 +85,7 @@ static	int		temp(char **a, int y, t_point **pt, t_mlx *mlx)
 		}
 		else
 		{
-			*pt = point_new(x, y, ft_atoi(a[x]), mlx);
+			*pt = tmp;
 			mlx->scn = *pt;
 		}
 		x++;
@@ -101,7 +94,7 @@ static	int		temp(char **a, int y, t_point **pt, t_mlx *mlx)
 	return ((w != x) ? 0 : w);
 }
 
-int			input(int fd, t_mlx *mlx)
+int					input(int fd, t_mlx *mlx)
 {
 	char	*line;
 	char	**a;

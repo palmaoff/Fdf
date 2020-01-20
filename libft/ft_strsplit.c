@@ -51,6 +51,12 @@ static char		**ft_fr(char **d, int i)
 	return (0);
 }
 
+static	void	dfree(char **s)
+{
+	free(*s);
+	*s = NULL;
+}
+
 static char		**ft_copy(const char *s, char **d, char c, int words)
 {
 	int		i;
@@ -72,7 +78,7 @@ static char		**ft_copy(const char *s, char **d, char c, int words)
 			j++;
 		}
 		if (j == 0)
-			d[i] = NULL;
+			dfree(&d[i]);
 		else
 			d[i][j] = '\0';
 		i++;
