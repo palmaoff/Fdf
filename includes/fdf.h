@@ -41,6 +41,8 @@
 */
 
 # define M 46
+# define MLB 1
+# define MRB 2
 
 /*
 ** Menu
@@ -56,6 +58,7 @@
 # define ROTATION_X "   X:(numpad) 6/3"
 # define ROTATION_Y "   Y:(numpad) 1/2"
 # define ROTATION_Z "   Z:(numpad) 4/5"
+# define ROTATION_M "   MLB->Hold&move"
 # define RESET_BTN "   (numpad) 0"
 # define PROJ_I "   Iso: I"
 # define PROJ_C "   Con: C"
@@ -76,6 +79,15 @@
 # include <math.h>
 # include "get_next_line.h"
 # include "../libft/libft.h"
+
+typedef struct		s_mouse
+{
+	int				old_x;
+	int				old_y;
+	int				x;
+	int				y;
+	int				pressed;
+}					t_mouse;
 
 typedef struct		s_img
 {
@@ -119,6 +131,7 @@ typedef	struct		s_mlx
 	char			*file;
 	void			*mlx;
 	void			*win;
+	t_mouse			mouse;
 	t_img			img;
 	t_cam			cam;
 	t_point			p;
@@ -145,5 +158,8 @@ void				print_menu(t_mlx *mlx);
 void				background(t_mlx *mlx);
 int					key_press(int keycode, t_mlx *mlx);
 void				die(char *str);
+int					hook_mouse(int button, int x, int y, t_mlx *mlx);
+int					mouse_move(int x, int y, void *param);
+int					mouse_release(int button, int x, int y, void *param);
 
 #endif

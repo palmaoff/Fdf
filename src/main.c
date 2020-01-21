@@ -12,27 +12,6 @@
 
 #include "../includes/fdf.h"
 
-int		hook_mouse(int button, int x, int y, t_mlx *mlx)
-{
-	x = 0;
-	y = 0;
-	mlx_destroy_image(mlx->mlx, (*mlx).img.img_ptr);
-	img_new(mlx);
-	if (button == 4)
-	{
-		if (mlx->cam.z > 0)
-			mlx->cam.z += 1;
-	}
-	if (button == 5)
-	{
-		if (mlx->cam.z > 0)
-			mlx->cam.z -= 1;
-	}
-	if (mlx->cam.z < 1)
-		mlx->cam.z = 1;
-	print_map(mlx);
-	return (0);
-}
 
 int		hook_exit(void *param)
 {
@@ -54,6 +33,7 @@ void	init(t_mlx *mlx)
 	mlx->cam.z_r = 0.523599;
 	mlx->cam.color = 0;
 	mlx->cam.d_color = 0;
+	mlx->mouse.pressed = 0;
 }
 
 int		main(int ac, char **av)
@@ -77,6 +57,8 @@ int		main(int ac, char **av)
 	print_map(&mlx);
 	mlx_hook(mlx.win, 2, 0, key_press, &mlx);
 	mlx_hook(mlx.win, 4, 0, hook_mouse, &mlx);
+	mlx_hook(mlx.win, 5, 0, mouse_release, &mlx);
+	mlx_hook(mlx.win, 6, 0, mouse_move, &mlx);
 	mlx_hook(mlx.win, 17, 0, hook_exit, mlx.mlx);
 	print_menu(&mlx);
 	mlx_loop(mlx.mlx);

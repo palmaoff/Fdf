@@ -22,6 +22,7 @@ static	void	menu2(t_mlx *mlx, int color, int *y)
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, ROTATION_X);
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, ROTATION_Y);
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, ROTATION_Z);
+	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, ROTATION_M);
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color
 			, " Confg. reset:");
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, RESET_BTN);
@@ -52,7 +53,7 @@ static	void	menu1(t_mlx *mlx, int color, int *y)
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, R_MOVEMENT);
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, R_MOVEMENT1);
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color
-			, " Z shift:");
+			, " Altitude:");
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, Z_SHIFT);
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, Z_SHIFT1);
 }
