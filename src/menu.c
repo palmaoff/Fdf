@@ -25,6 +25,13 @@ static	void	menu2(t_mlx *mlx, int color, int *y)
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color
 			, " Confg. reset:");
 	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, RESET_BTN);
+	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color
+			, " Projections:");
+	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, PROJ_I);
+	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, PROJ_C);
+	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, PROJ_P);
+	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, " Color:");
+	mlx_string_put(mlx->mlx, mlx->win, 30, *y += 20, color, COLOR_CH);
 }
 
 static	void	menu1(t_mlx *mlx, int color, int *y)

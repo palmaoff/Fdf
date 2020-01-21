@@ -57,6 +57,10 @@
 # define ROTATION_Y "   Y:(numpad) 1/2"
 # define ROTATION_Z "   Z:(numpad) 4/5"
 # define RESET_BTN "   (numpad) 0"
+# define PROJ_I "   Iso: I"
+# define PROJ_C "   Con: C"
+# define PROJ_P "   Paral: P"
+# define COLOR_CH " (top_r) -/+"
 
 /*
 ** Other
