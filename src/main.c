@@ -53,6 +53,7 @@ void	init(t_mlx *mlx)
 	mlx->cam.y_r = 0;
 	mlx->cam.z_r = 0;
 	mlx->cam.color = 0;
+	mlx->cam.d_color = 0;
 }
 
 int		main(int ac, char **av)

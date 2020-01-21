@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-
+#include <stdio.h>
 void	die(char *str)
 {
 	ft_putstr(str);
@@ -46,10 +46,19 @@ static	int		key_press_too_too(int keycode, t_mlx *mlx)
 	}
 	if (keycode == 8)
 	{
-		mlx->cam.x_r = 1.036266;
+		mlx->cam.x_r = 1.007066;
 		mlx->cam.y_r = 0;
 		mlx->cam.z_r = -0.785398;
 	}
+	if (keycode == 24)
+	{
+		mlx->cam.d_color += 1000;
+	}
+	if (keycode == 27)
+	{
+		mlx->cam.d_color -= 1000;
+	}
+//	printf("%d", keycode);
 	print_map(mlx);
 	return (0);
 }

@@ -17,6 +17,13 @@
 # define MENU_WIDHT 300
 
 /*
+** Default Colors
+*/
+
+# define HELL 0x3F27D9
+# define TOP 0x47C52E
+
+/*
 ** Colors
 */
 
@@ -100,6 +107,7 @@ typedef	struct		s_cam
 	float			z_r;
 	float			di;
 	int				color;
+	int				d_color;
 }					t_cam;
 
 typedef	struct		s_mlx
