@@ -11,44 +11,26 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
+
 void	die(char *str)
 {
 	ft_putstr(str);
 	exit(0);
 }
 
-static	int		key_press_too_too(int keycode, t_mlx *mlx)
+static	int		key_press_again(int keycode, t_mlx *mlx)
 {
-	if (keycode == 82)
-	{
-		mlx->cam.x_r = 0;
-		mlx->cam.y_r = 0;
-		mlx->cam.z_r = 0;
-		mlx->cam.di = 1;
-		mlx->cam.z = 20;
-		mlx->cam.x = X_START_POS;
-		mlx->cam.y = Y_START_POS;
-	}
-	if (mlx->cam.z < 1)
-		mlx->cam.z = 1;
-	if (keycode == 35)
-	{
-		mlx->cam.x_r = -0.563734;
-		mlx->cam.y_r = 0;
-		mlx->cam.z_r = -0.785398;
-	}
 	if (keycode == 34)
 	{
-		mlx->cam.x_r = 0;
-		mlx->cam.y_r = 0;
-		mlx->cam.z_r = 0;
+		mlx->cam.x_r = -0.785398;
+		mlx->cam.y_r = -0.523599;
+		mlx->cam.z_r = 0.523599;
 	}
 	if (keycode == 8)
 	{
-		mlx->cam.x_r = 1.007066;
+		mlx->cam.x_r = 0;
 		mlx->cam.y_r = 0;
-		mlx->cam.z_r = -0.785398;
+		mlx->cam.z_r = 0;
 	}
 	if (keycode == 24)
 	{
@@ -58,8 +40,31 @@ static	int		key_press_too_too(int keycode, t_mlx *mlx)
 	{
 		mlx->cam.d_color -= 1000;
 	}
-//	printf("%d", keycode);
 	print_map(mlx);
+	return (0);
+}
+
+static	int		key_press_too_too(int keycode, t_mlx *mlx)
+{
+	if (keycode == 82)
+	{
+		mlx->cam.x_r = -0.785398;
+		mlx->cam.y_r = -0.523599;
+		mlx->cam.z_r = 0.523599;
+		mlx->cam.di = 1;
+		mlx->cam.z = 20;
+		mlx->cam.x = X_START_POS;
+		mlx->cam.y = Y_START_POS;
+	}
+	if (mlx->cam.z < 1)
+		mlx->cam.z = 1;
+	if (keycode == 35)
+	{
+		mlx->cam.x_r = -1.5708;
+		mlx->cam.y_r = 0;
+		mlx->cam.z_r = 0;
+	}
+	key_press_again(keycode, mlx);
 	return (0);
 }
 
@@ -74,13 +79,13 @@ static	int		key_press_too(int keycode, t_mlx *mlx)
 		mlx->cam.x_r -= 0.1;
 	else if (keycode == 85)
 		mlx->cam.x_r += 0.1;
-	else if (keycode == 83)
-		mlx->cam.y_r += 0.1;
-	else if (keycode == 84)
-		mlx->cam.y_r -= 0.1;
 	else if (keycode == 86)
-		mlx->cam.z_r += 0.1;
+		mlx->cam.y_r += 0.1;
 	else if (keycode == 87)
+		mlx->cam.y_r -= 0.1;
+	else if (keycode == 83)
+		mlx->cam.z_r += 0.1;
+	else if (keycode == 84)
 		mlx->cam.z_r -= 0.1;
 	key_press_too_too(keycode, mlx);
 	return (0);

@@ -49,9 +49,9 @@ void	init(t_mlx *mlx)
 	mlx->cam.y = HEIGHT / 2;
 	mlx->cam.z = 20;
 	mlx->cam.di = 1;
-	mlx->cam.x_r = 0;
-	mlx->cam.y_r = 0;
-	mlx->cam.z_r = 0;
+	mlx->cam.x_r = -0.785398;
+	mlx->cam.y_r = -0.523599;
+	mlx->cam.z_r = 0.523599;
 	mlx->cam.color = 0;
 	mlx->cam.d_color = 0;
 }

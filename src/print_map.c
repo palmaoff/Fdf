@@ -22,8 +22,8 @@ static	void	iso(t_point *scrn, t_mlx *mlx)
 	scrn->y *= mlx->cam.z;
 	pre_x = scrn->x;
 	pre_y = scrn->y;
-	scrn->x = (pre_x - pre_y) * cos(0.46373398) + mlx->cam.x;
-	scrn->y = -scrn->z + (pre_y + pre_x) * sin(0.46373398) + mlx->cam.y;
+	scrn->x = pre_x + mlx->cam.x;
+	scrn->y = pre_y + mlx->cam.y;
 }
 
 static	void	screen_map(t_point *scn, t_point *scrn, t_mlx *mlx)
