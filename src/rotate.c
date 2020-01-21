@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 void	rotate(t_mlx *mlx, int i, int j)
 {

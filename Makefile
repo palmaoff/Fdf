@@ -36,29 +36,29 @@ OBJDIR	= ./obj/
 
 all: $(NAME)
 
-$(NAME): obj $(MLX_LIB) $(LIBFT) $(OBJ) ./includes ./libft ./src
-		$(CC) $(FLAGS) $(OBJ) $(MLX_LNK) -o $(NAME) $(LIBFT)
+$(NAME): obj $(MLX_LIB) $(LIBFT) $(OBJ) ./libft/*
+		@$(CC) $(FLAGS) $(OBJ) $(MLX_LNK) -o $(NAME) $(LIBFT)
 
 obj:
-	mkdir -p $(OBJDIR)
+	@mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
-		$(CC) $(FLAGS) $(MLX_INK) -I $(INKDIR) $(LIB_INK) -o $@ -c $<
+		$(CC) $(FLAGS) $(MLX_INK) -I $(INKDIR) $(LIB_INK) -o $@ -c $< 
 		
 $(MLX_LIB):
-	make -C $(MLX)
+	@make -C $(MLX)
 
 $(LIBFT):
-	make -C $(LIB)
+	@make -C $(LIB)
 
 clean:
-		rm -f $(OBJ)
-		make -C $(LIB) clean
-		make -C $(MLX) clean
+		@rm -f $(OBJ)
+		@make -C $(LIB) clean
+		@make -C $(MLX) clean
 
 fclean: clean
-		rm -f $(NAME)
-		make -C $(LIB) fclean
+		@rm -f $(NAME)
+		@make -C $(LIB) fclean
 
 re: fclean all
 
