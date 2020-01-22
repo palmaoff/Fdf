@@ -41,7 +41,9 @@ int			mouse_release(int button, int x, int y, void *param)
 {
 	t_mlx	*mlx;
 
-
+	(void)button;
+	(void)x;
+	(void)y;
 	mlx = (t_mlx *)param;
 	mlx->mouse.pressed = 0;
 	return (0);
