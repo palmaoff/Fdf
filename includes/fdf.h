@@ -12,8 +12,8 @@
 
 #ifndef FDF_H
 # define FDF_H
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 2048
+# define HEIGHT 1080
 # define MENU_WIDHT 300
 
 /*
@@ -68,9 +68,6 @@
 /*
 ** Other
 */
-
-# define X_START_POS (WIDTH + MENU_WIDHT) / 2
-# define Y_START_POS HEIGHT / 2
 
 # include "mlx.h"
 # include <unistd.h>

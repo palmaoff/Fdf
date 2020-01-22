@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	die(char *str)
+void			die(char *str)
 {
 	ft_putstr(str);
 	exit(0);
@@ -51,10 +51,10 @@ static	int		key_press_too_too(int keycode, t_mlx *mlx)
 		mlx->cam.x_r = -0.785398;
 		mlx->cam.y_r = -0.523599;
 		mlx->cam.z_r = 0.523599;
-		mlx->cam.di = 1;
+		mlx->cam.di = 0.3;
 		mlx->cam.z = 20;
-		mlx->cam.x = X_START_POS;
-		mlx->cam.y = Y_START_POS;
+		mlx->cam.x = (WIDTH + MENU_WIDHT) / 2;;
+		mlx->cam.y = HEIGHT / 2;
 	}
 	if (mlx->cam.z < 1)
 		mlx->cam.z = 1;
@@ -91,7 +91,7 @@ static	int		key_press_too(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-int		key_press(int keycode, t_mlx *mlx)
+int				key_press(int keycode, t_mlx *mlx)
 {
 	mlx_destroy_image(mlx->mlx, (*mlx).img.img_ptr);
 	img_new(mlx);

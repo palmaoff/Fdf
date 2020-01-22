@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-int		hook_mouse(int button, int x, int y, t_mlx *mlx)
+int	hook_mouse(int button, int x, int y, t_mlx *mlx)
 {
 	x = 0;
 	y = 0;
@@ -36,8 +36,7 @@ int		hook_mouse(int button, int x, int y, t_mlx *mlx)
 	return (0);
 }
 
-
-int			mouse_release(int button, int x, int y, void *param)
+int	mouse_release(int button, int x, int y, void *param)
 {
 	t_mlx	*mlx;
 
@@ -49,8 +48,7 @@ int			mouse_release(int button, int x, int y, void *param)
 	return (0);
 }
 
-
-int mouse_move(int x, int y, void *param)
+int	mouse_move(int x, int y, void *param)
 {
 	t_mlx *mlx;
 
@@ -59,7 +57,7 @@ int mouse_move(int x, int y, void *param)
 	mlx->mouse.old_y = mlx->mouse.y;
 	mlx->mouse.x = x;
 	mlx->mouse.y = y;
-	if(mlx->mouse.pressed)
+	if (mlx->mouse.pressed)
 	{
 		mlx->cam.x_r += (y - mlx->mouse.old_y) * 0.002;
 		mlx->cam.y_r += (x - mlx->mouse.old_x) * 0.002;

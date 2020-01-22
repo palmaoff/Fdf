@@ -13,7 +13,8 @@ SRC =   main.c \
 		rotate.c \
 		ft_htoi.c \
 		color.c \
-		menu.c
+		menu.c \
+		mouse.c
 
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
