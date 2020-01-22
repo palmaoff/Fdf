@@ -12,7 +12,6 @@
 
 #include "../includes/fdf.h"
 
-
 int		hook_exit(void *param)
 {
 	(void)param;
@@ -27,7 +26,7 @@ void	init(t_mlx *mlx)
 	mlx->cam.x = (WIDTH + MENU_WIDHT) / 2;
 	mlx->cam.y = HEIGHT / 2;
 	mlx->cam.z = 20;
-	mlx->cam.di = 1;
+	mlx->cam.di = 0.3;
 	mlx->cam.x_r = -0.785398;
 	mlx->cam.y_r = -0.523599;
 	mlx->cam.z_r = 0.523599;
@@ -50,10 +49,7 @@ int		main(int ac, char **av)
 	init(&mlx);
 	mlx.file = av[1];
 	if (!input(fd, &mlx))
-	{
-		ft_putstr("invalid file\n");
-		return (0);
-	}
+		die("invalid file\n");
 	print_map(&mlx);
 	mlx_hook(mlx.win, 2, 0, key_press, &mlx);
 	mlx_hook(mlx.win, 4, 0, hook_mouse, &mlx);
