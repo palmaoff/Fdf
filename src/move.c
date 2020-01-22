@@ -6,7 +6,7 @@
 /*   By: eflorean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 15:52:22 by eflorean          #+#    #+#             */
-/*   Updated: 2020/01/18 15:52:24 by eflorean         ###   ########.fr       */
+/*   Updated: 2020/01/22 13:48:03 by eflorean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static	int		key_press_too_too(int keycode, t_mlx *mlx)
 		mlx->cam.z_r = 0.523599;
 		mlx->cam.di = 0.3;
 		mlx->cam.z = 20;
-		mlx->cam.x = (WIDTH + MENU_WIDHT) / 2;;
+		mlx->cam.x = (WIDTH + MENU_WIDHT) / 2;
 		mlx->cam.y = HEIGHT / 2;
 	}
 	if (mlx->cam.z < 1)
